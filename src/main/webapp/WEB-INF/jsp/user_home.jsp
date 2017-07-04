@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -32,13 +34,19 @@
         <div id="body_header"><h1 id="labSpaceName">路过秋天</h1>
             <h2 id="labSpaceIntro">同样的3年，有的人从学生到当了MVP了，而我却在原地，卖弄当年的代码，秋天的风，有点凄，有点凉！</h2>
             <ul class="personalnav" id="headRightMenu">
-                <li><a id="labUserName" href="/reg.do">游客[注册]</a></li>
-                <li><a id="logStatus" href="/login.do">登录</a></li>
+                <c:if test="${empty login_user}">
+                    <li><a id="labUserName" href="http://www.cyqdata.com/sys/reg">游客[注册]</a></li>
+                    <li><a id="logStatus" href="http://www.cyqdata.com/sys/login/LwBAjAHkAcQAxADEANgAyAA==">登录</a></li>
+                </c:if>
+                <c:if test="${!empty login_user}">
+                    <li><a id="login_user" href="http://www.cyqdata.com/sys/reg">${login_user.username}</a></li>
+                    <li><a id="logout" href="logout.do">注销</a></li>
+                </c:if>
                 <li><a href="http://www.cyqdata.com/cyq1162-chinese">中文</a></li>
                 <li><a href="http://www.cyqdata.com/cyq1162-english">English</a></li>
             </ul>
             <ul class="menu" id="headMenu">
-                <li><a href="http://www.cyqdata.com/" id="labHomeUrl">秋色园</a></li>
+                <li><a href="/home.do" id="labHomeUrl">秋色园</a></li>
                 <li><a href="http://www.cyqdata.com/cyq1162" id="labIndexUrl">首页</a></li>
                 <li><a href="http://www.cyqdata.com/cyq1162/admin" id="labAdminUrl">管理</a></li>
                 <li><a target="_blank" href="http://www.cyqdata.com/cyq1162/rss" id="labRssUrl" class="last">Rss</a>

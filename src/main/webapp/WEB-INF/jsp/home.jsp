@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,9 +21,14 @@
     <div class="hd_info">
         <div class="cnts">
             <div class="login_area">
-                <div><a href="/reg.do">游客[注册]</a> | <a
-                        href="/login.do">登录</a> | <a href="http://www.cyqdata.com/chinese">中文</a>
-                    | <a href="http://www.cyqdata.com/english">english</a></div>
+                <c:if test="${empty login_user}">
+                    <a href="reg.do">游客[注册]</a> | <a
+                        href="login.do">登录</a>
+                </c:if>
+                <c:if test="${!empty login_user}">
+                    <a href="reg.do">${login_user.username}</a> | <a
+                        href="login.do">注销</a>
+                </c:if>
             </div>
             <div class="clear"></div>
         </div>
@@ -415,226 +422,13 @@
             <div class="w_l"><h4>积分排行</h4>
                 <div class="blogger_list">
                     <ul count="110">
-                        <li>1. <a style="display:inline" target="_blank"
-                                  href="http://www.cyqdata.com/cnblogs">IT技术博客</a></li>
-                        <li>2. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/cyq1162">路过秋天</a>
-                        </li>
-                        <li>3. <a style="display:inline" target="_blank"
-                                  href="http://www.cyqdata.com/download">秋式软件下载</a></li>
-                        <li>4. <a style="display:inline" target="_blank"
-                                  href="http://www.cyqdata.com/healthcare">健康保健区</a></li>
-                        <li>5. <a style="display:inline" target="_blank"
-                                  href="http://www.cyqdata.com/psychology">健康心理学</a></li>
-                        <li>6. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/fensi">微博粉丝精灵</a>
-                        </li>
-                        <li>7. <a style="display:inline" target="_blank"
-                                  href="http://www.cyqdata.com/physiology">健康生理学</a></li>
-                        <li>8. <a style="display:inline" target="_blank"
-                                  href="http://www.cyqdata.com/cyqdata">ORM数据框架</a></li>
-                        <li>9. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/harmony">健康情感区</a>
-                        </li>
-                        <li>10. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/smile">进来轻松一下</a>
-                        </li>
-                        <li>11. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/qblog">QBlog官方博客</a></li>
-                        <li>12. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/android">Android手机开发</a>
-                        </li>
-                        <li>13. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/xgbyylb">香港dna</a></li>
-                        <li>14. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/murmur">健康私语帮</a>
-                        </li>
-                        <li>15. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/dbimport">数据库导数据与文档生成工具</a>
-                        </li>
-                        <li>16. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/liqiang">阿芙萝第忒</a></li>
-                        <li>17. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/aspnetmvc">ASP.NET
-                            MVC开发</a></li>
-                        <li>18. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/education">健康教育区</a></li>
-                        <li>19. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/aaaaaaaaa">杂文天地</a></li>
-                        <li>20. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/dearjiaxin">微博直通车</a></li>
-                        <li>21. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/nhibernate">Nhibernate开发</a>
-                        </li>
-                        <li>22. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/bin1234">bin1234</a></li>
-                        <li>23. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/tweibot">微博推一推</a></li>
-                        <li>24. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/iislogviewer">秋式网站日志分析器</a>
-                        </li>
-                        <li>25. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/lsjwq">lsjwq</a>
-                        </li>
-                        <li>26. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/hotnews">今日热点新事</a></li>
-                        <li>27. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/icbj00">icbj00</a></li>
-                        <li>28. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/zhezhi">折纸狂徒</a>
-                        </li>
-                        <li>29. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/qiushi">秋式开源团队</a></li>
-                        <li>30. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/mmicnet">记录.NET学习的点滴，欢迎收藏我的博客t</a>
-                        </li>
-                        <li>31. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/mec365">MEC电子商务</a></li>
-                        <li>32. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/chess">Silverlight+WCF
-                            实战-网络象棋</a></li>
-                        <li>33. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/weiboyingxiao">微博营销</a>
-                        </li>
-                        <li>34. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/weibozhushou">weibozhushou</a>
-                        </li>
-                        <li>35. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/qsweba">秋式开源团队-Web1组</a>
-                        </li>
-                        <li>36. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/mapxtreme">GIS开发者</a></li>
-                        <li>37. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/mmics">mmics</a>
-                        </li>
-                        <li>38. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/kevan">风之轩</a>
-                        </li>
-                        <li>39. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/qswebc">秋式开源团队-Web3组</a>
-                        </li>
-                        <li>40. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/w1146611240">w1146611240</a>
-                        </li>
-                        <li>41. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/ttic1">ttic1</a>
-                        </li>
-                        <li>42. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/jiang997234625">新浪微博粉丝家族</a>
-                        </li>
-                        <li>43. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/guangliang">xiwen</a></li>
-                        <li>44. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/linhongquan">linhongquan</a>
-                        </li>
-                        <li>45. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/seoblog">中文网站SEO优化博客</a>
-                        </li>
-                        <li>46. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/bulletin">系统公告</a></li>
-                        <li>47. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/songboriceboy">songboriceboy</a>
-                        </li>
-                        <li>48. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/pangziding">微博淘客精灵</a>
-                        </li>
-                        <li>49. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/qswinform">秋式开源团队-Winform组</a>
-                        </li>
-                        <li>50. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/ok161">老王</a>
-                        </li>
-                        <li>51. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/nsonline">nsonline</a>
-                        </li>
-                        <li>52. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/lxeric">lxeric</a></li>
-                        <li>53. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/fanzaoa01">fanzaoa01</a>
-                        </li>
-                        <li>54. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/csjkyy">长沙甲亢医院</a></li>
-                        <li>55. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/huangwenquan123">huangwenquan123</a>
-                        </li>
-                        <li>56. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/ppp5p">蓝天</a>
-                        </li>
-                        <li>57. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/windowsphone">WP7手机开发</a>
-                        </li>
-                        <li>58. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/taorlx">微博辅助粉丝王</a></li>
-                        <li>59. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/poisson">poisson</a></li>
-                        <li>60. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/ggaatt">ggaatt</a></li>
-                        <li>61. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/a476116253">a476116253</a>
-                        </li>
-                        <li>62. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/caoliushequ">caoliushequ</a>
-                        </li>
-                        <li>63. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/hcmfys">hcmfys</a></li>
-                        <li>64. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/s1n2ee">s1n2ee</a></li>
-                        <li>65. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/qstask">秋式开源团队-任务组</a>
-                        </li>
-                        <li>66. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/picture">秋图</a>
-                        </li>
-                        <li>67. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/w99jky">w99jky</a></li>
-                        <li>68. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/wanglong2011">HackerVirus</a>
-                        </li>
-                        <li>69. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/david_telvent">david_telvent</a>
-                        </li>
-                        <li>70. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/e6waluo">e6waluo</a></li>
-                        <li>71. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/zsxlc">zsxlc</a>
-                        </li>
-                        <li>72. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/zengran">zengran</a></li>
-                        <li>73. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/wujunwen">恒顺</a>
-                        </li>
-                        <li>74. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/caimeixue">caimeixue</a>
-                        </li>
-                        <li>75. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/dream90">dream90</a></li>
-                        <li>76. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/birchlee">birchlee</a>
-                        </li>
-                        <li>77. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/asxinyu">asxinyu</a></li>
-                        <li>78. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/youdaigou">优代购</a></li>
-                        <li>79. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/xiaoyi1234">xiaoyi1234</a>
-                        </li>
-                        <li>80. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/zzbdfyy">zzbdfyy</a></li>
-                        <li>81. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/ihelpsoft">王建宇</a></li>
-                        <li>82. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/ata_chen">旅行者游记博客</a></li>
-                        <li>83. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/sfzzh999">sfzzh999</a>
-                        </li>
-                        <li>84. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/erdangege">erdangege</a>
-                        </li>
-                        <li>85. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/goodboy">goodboy</a></li>
-                        <li>86. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/qswebb">秋式开源团队-Web2组</a>
-                        </li>
-                        <li>87. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/storys">storys</a></li>
-                        <li>88. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/th4313">th4313</a></li>
-                        <li>89. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/fanlinet">闪电微助理</a></li>
-                        <li>90. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/jiatong">佳通化学</a>
-                        </li>
-                        <li>91. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/zhuce3">zhuce3</a></li>
-                        <li>92. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/crm8000">crm8000</a></li>
-                        <li>93. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/lkmgydx">lkmgydx</a></li>
-                        <li>94. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/ulama">ulama</a>
-                        </li>
-                        <li>95. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/yoyo_9_6">yoyo_9_6</a>
-                        </li>
-                        <li>96. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/defengkk">defengkk</a>
-                        </li>
-                        <li>97. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/awxave">爱魏星-QBlog博客</a>
-                        </li>
-                        <li>98. <a style="display:inline" target="_blank"
-                                   href="http://www.cyqdata.com/haferd">haferd</a></li>
-                        <li>99. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/s01212450">s01212450</a>
-                        </li>
-                        <li>100. <a style="display:inline" target="_blank"
-                                    href="http://www.cyqdata.com/ycxdr03">ycxdr03</a></li>
-                        <li>101. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/jiakang88">jiakang88</a>
-                        </li>
-                        <li>102. <a style="display:inline" target="_blank"
-                                    href="http://www.cyqdata.com/bbbdang">bbbdang</a></li>
-                        <li>103. <a style="display:inline" target="_blank"
-                                    href="http://www.cyqdata.com/test003">test003</a></li>
-                        <li>104. <a style="display:inline" target="_blank"
-                                    href="http://www.cyqdata.com/sxkjack">sxkjack</a></li>
-                        <li>105. <a style="display:inline" target="_blank"
-                                    href="http://www.cyqdata.com/bbnjib">bbnjib</a></li>
-                        <li>106. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/yinmutian">yinmutian</a>
-                        </li>
-                        <li>107. <a style="display:inline" target="_blank"
-                                    href="http://www.cyqdata.com/bolibo">bolibo</a></li>
-                        <li>108. <a style="display:inline" target="_blank"
-                                    href="http://www.cyqdata.com/shishi">shishi</a></li>
-                        <li>109. <a style="display:inline" target="_blank" href="http://www.cyqdata.com/chinaacademia">chinaacademia</a>
-                        </li>
-                        <li>110. <a style="display:inline" target="_blank"
-                                    href="http://www.cyqdata.com/adiljan">adiljan</a></li>
+                        <c:forEach items="${users}" var="bloguser" varStatus="index_object">
+                            <c:if test="${!empty bloguser}">
+
+                            <li>${index_object.index+1} <a style="display:inline" target="_blank"
+                                                           href="http://www.cyqdata.com/cnblogs">${bloguser.username}</a></li>
+                            </c:if>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>

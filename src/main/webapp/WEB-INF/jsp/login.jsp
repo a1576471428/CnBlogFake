@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -82,12 +84,12 @@
                 <tbody>
                 <tr>
                     <td class="tdright"><span>用户名</span>:</td>
-                    <td class="tdleft"><input id="txtUserName" name="txtUserName" type="text" maxlength="25"></td>
+                    <td class="tdleft"><input id="txtUserName" name="username" type="text" maxlength="25"></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="tdright"><span>密　码</span>:</td>
-                    <td class="tdleft"><input name="txtPassWord" type="password" maxlength="30" size="20"></td>
+                    <td class="tdleft"><input name="password" type="password" maxlength="30" size="20"></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -104,6 +106,9 @@
                 </tbody>
             </table>
         </form>
+        <div style="text-align:center;margin-top:20px;">
+            <p>${msg}</p>
+        </div>
         <div id="postMessage" style="text-align:center;margin-top:20px;"></div>
     </div>
 </div>
