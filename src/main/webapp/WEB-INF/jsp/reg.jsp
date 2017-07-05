@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -59,32 +61,34 @@
 <div style="width: 800px; margin:100px auto;"><h1
         style="font-size: xx-large; color: #99ccff; font-style: italic; margin:0 auto;">Registry For Enter QBlog</h1>
     <div style="margin:auto; text-align: center;margin-top: 50px;">
-        <form method="post"><input name="myAct" type="hidden" value="Reg"><br>
+
+        <form method="post" >
+            <input name="myAct" type="hidden" value="Reg"><br>
             <table width="440px" align="center">
                 <tbody>
                 <tr>
                     <td class="tdright"><span>用户名</span>:</td>
-                    <td class="tdleft"><input id="txtUserName" name="txtUserName" type="text" maxlength="25"
+                    <td class="tdleft"><input id="txtUserName" name="username" type="text" maxlength="25"
                                               title="length must &gt; 4"><br></td>
                     <td><input title="Check UserName" name="btnCheck" type="submit" value="检查用户名"
                                style="color:White;background-color:#336699;font-weight:bold;border-width:0px;"></td>
                 </tr>
                 <tr>
                     <td class="tdright"><span>密　码</span>:</td>
-                    <td class="tdleft"><input name="txtPassWord" type="password" maxlength="30" size="20"
+                    <td class="tdleft"><input name="password" type="password" maxlength="30" size="20"
                                               title="length must &gt; 6"></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="tdright"><span>密　码</span>:
                     </td>
-                    <td class="tdleft"><input name="txtPassWordAgain" type="password" maxlength="30"></td>
+                    <td class="tdleft"><input name="passwordAgain" type="password" maxlength="30"></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="tdright"><span>邮　件</span>:
                     </td>
-                    <td class="tdleft"><input name="txtEmail" type="text" maxlength="50"
+                    <td class="tdleft"><input name="email" type="text" maxlength="50"
                                               title="it like: autumn@cyqdata.com"></td>
                     <td></td>
                 </tr>
@@ -92,7 +96,7 @@
                     <td class="tdright"></td>
                     <td class="tdleft" colspan="2"><input name="btnReg" type="submit" value="注册"
                                                           style="width: 61px;margin-left: 20px;"><a
-                            href="http://www.cyqdata.com/sys/login" style="text-decoration: none; color: #99ccff; font-size: 12px;
+                            href="/login.do" style="text-decoration: none; color: #99ccff; font-size: 12px;
                                 margin-left: 20px;">登录</a> |
                         <a href="http://www.cyqdata.com/sys/getpassword" style="text-decoration: none; color: #99ccff; font-size: 12px;
 								margin-left: 2px;">找回密码</a></td>
@@ -100,6 +104,10 @@
                 </tbody>
             </table>
         </form>
+            <div style="text-align:center;margin-top:20px;">
+                <p>${msg}</p>
+        </div>
+
         <div id="postMessage" style="text-align:center;margin-top:20px;"></div>
     </div>
 </div>
