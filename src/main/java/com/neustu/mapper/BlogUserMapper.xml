@@ -30,4 +30,8 @@
         SELECT * FROM blog_user WHERE UserName = #{username}
     </select>
 
+    <select id="getUserInfoById" parameterType="int" resultType="BlogUser">
+        SELECT * FROM blog_user WHERE ID = #{VALUE}
+    </select>
+
 </mapper>

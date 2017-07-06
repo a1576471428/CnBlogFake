@@ -48,7 +48,7 @@
             <ul class="menu" id="headMenu">
                 <li><a href="/home.do" id="labHomeUrl">秋色园</a></li>
                 <li><a href="/home.do" id="labIndexUrl">首页</a></li>
-                <li><a href="http://www.cyqdata.com/cyq1162/admin" id="labAdminUrl">管理</a></li>
+                <li><a href="/admin.do?userid=${login_user.id}" id="labAdminUrl">管理</a></li>
                 <li><a target="_blank" href="http://www.cyqdata.com/cyq1162/rss" id="labRssUrl" class="last">Rss</a>
                 </li>
             </ul>

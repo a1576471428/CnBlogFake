@@ -26,8 +26,8 @@
                         href="login.do">登录</a>
                 </c:if>
                 <c:if test="${!empty login_user}">
-                    <a href="reg.do">${login_user.username}</a> | <a
-                        href="login.do">注销</a>
+                    <a href="userhome.do">${login_user.username}</a> | <a
+                        href="logout.do">注销</a>
                 </c:if>
             </div>
             <div class="clear"></div>

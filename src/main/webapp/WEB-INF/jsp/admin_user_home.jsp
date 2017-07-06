@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -14,7 +16,7 @@
 <body>
 <div class="wrap">
     <div id="Node_HeaderNav">
-        <div class="header"><h1 class="space-name" id="labSpaceName">songboriceboy</h1>
+        <div class="header"><h1 class="space-name" id="labSpaceName">${username}</h1>
             <p class="space-desc" id="labSpaceIntro">作者:路过秋天 http://cyq1162.cnblogs.com</p>
             <p class="operate" id="headRightMenu"><a href="http://www.cyqdata.com/songboriceboy" id="labUserName"><img
                     src="images/default1.jpg" align="absmiddle" width="16px" height="16px"
@@ -81,7 +83,7 @@
                         <dt><a href="http://www.cyqdata.com/songboriceboy/article">我的文章</a></dt>
                         <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/post">发表文章</a></dd>
                         <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/all">文章列表</a></dd>
-                        <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/class">文章分类</a></dd>
+                        <dd><a href="/cate/list_user_all_history.do">文章分类</a></dd>
                     </dl>
                     <dl>
                         <dt><a href="http://www.cyqdata.com/songboriceboy/photo/">我的相册</a></dt>

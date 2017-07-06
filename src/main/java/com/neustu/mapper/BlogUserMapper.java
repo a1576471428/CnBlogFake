@@ -9,5 +9,6 @@ public interface BlogUserMapper {
     BlogUser loginUser(BlogUser blogUser);
     List<BlogUser> getAllUser();
     BlogUser checkUser(BlogUser blogUser);
+    BlogUser getUserInfoById(int id);
 }
 

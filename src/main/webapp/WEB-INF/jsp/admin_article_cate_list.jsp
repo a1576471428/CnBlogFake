@@ -1,13 +1,14 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>songboriceboy - 秋色园</title>
     <meta name="description" content="作者:路过秋天 http://cyq1162.cnblogs.com">
     <meta name="author" content="CYQ,CYQ.Data,CYQ.Blog">
     <meta name="copyright" content="2010-2020 www.cyqdata.com">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link href="/css/style.css" type="text/css" rel="stylesheet">
     <link rel="shortcut icon" href="http://www.cyqdata.com/skin/global/favicon.ico">
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.cyqdata.com/songboriceboy/rsd">
 </head>
@@ -17,7 +18,7 @@
         <div class="header"><h1 class="space-name" id="labSpaceName">songboriceboy</h1>
             <p class="space-desc" id="labSpaceIntro">作者:路过秋天 http://cyq1162.cnblogs.com</p>
             <p class="operate" id="headRightMenu"><a href="http://www.cyqdata.com/songboriceboy" id="labUserName"><img
-                    src="./admin_article_cate_list_files/default1.jpg" align="absmiddle" width="16px" height="16px"
+                    src="/images/default1.jpg" align="absmiddle" width="16px" height="16px"
                     border="0"> <b>songboriceboy</b> </a> | <a href="http://www.cyqdata.com/sys/logout" id="logStatus">注销</a>
                 | <a href="http://www.cyqdata.com/songboriceboy/admin/article/class-chinese">中文</a> | <a
                         href="http://www.cyqdata.com/songboriceboy/admin/article/class-english">English</a></p></div>
@@ -75,20 +76,25 @@
                                         </tr>
                                         </tbody>
                                         <tbody id="labArticleClass">
-                                        <tr>
-                                            <td class="tit"><a
-                                                    href="http://www.cyqdata.com/songboriceboy/admin/article-cate-1260"
-                                                    id="labName" title="">1 : MyQBlog [Default](2)</a> | <input
-                                                    type="checkbox" checked="checked" id="labIsVisible"
-                                                    disabled="disabled"></td>
-                                            <td>
-                                                [ <a
-                                                    href="http://www.cyqdata.com/songboriceboy/admin/article-class-edit-1260"
-                                                    id="labEdit">编辑</a> | <a
-                                                    href="http://www.cyqdata.com/songboriceboy/admin/article-class-del-1260"
-                                                    id="labDelete">删除</a> ]
-                                            </td>
+                                            <c:forEach items="${cates}" var="cate" varStatus="index_object">
+                                                <tr>
+                                                <td class="tit"><a
+                                                            href="http://www.cyqdata.com/songboriceboy/admin/photo-cate-1261"
+                                                            id="labName" title="">${index_object.index+1} : ${cate}</a> | <input type="checkbox"
+                                                                                                                                 checked="checked"
+                                                                                                                                 id="labIsVisible"
+                                                                                                                                 disabled="disabled">
+                                                    </td>
+                                                <td>
+                                                    [ <a
+                                                        href="http://www.cyqdata.com/songboriceboy/admin/article-class-edit-1260"
+                                                        id="labEdit">编辑</a> | <a
+                                                        href="http://www.cyqdata.com/songboriceboy/admin/article-class-del-1260"
+                                                        id="labDelete">删除</a> ]
+                                                </td>
                                         </tr>
+                                            </c:forEach>
+
                                         </tbody>
                                     </table>
                                 </div>
