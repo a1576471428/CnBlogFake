@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>songboriceboy - 秋色园</title>
+    <title>${login_user.username} - 秋色园</title>
     <meta name="description" content="作者:路过秋天 http://cyq1162.cnblogs.com">
     <meta name="author" content="CYQ,CYQ.Data,CYQ.Blog">
     <meta name="copyright" content="2010-2020 www.cyqdata.com">
@@ -15,7 +16,7 @@
 <body>
 <div class="wrap">
     <div id="Node_HeaderNav">
-        <div class="header"><h1 class="space-name" id="labSpaceName">songboriceboy</h1>
+        <div class="header"><h1 class="space-name" id="labSpaceName">${login_user.username}</h1>
             <p class="space-desc" id="labSpaceIntro">作者:路过秋天 http://cyq1162.cnblogs.com</p>
             <p class="operate" id="headRightMenu"><a href="/user_home.do" id="labUserName"><img
                     src="/images/default1.jpg" align="absmiddle" width="16px" height="16px"
@@ -85,9 +86,9 @@
                                                     </td>
                                                 <td>
                                                     [ <a
-                                                        href="http://www.cyqdata.com/songboriceboy/admin/article-class-edit-1260"
+                                                        href="/cate/edit_cate/${cate.id}.do"
                                                         id="labEdit">编辑</a> | <a
-                                                        href="http://www.cyqdata.com/songboriceboy/admin/article-class-del-1260"
+                                                        href="/cate/del_cate/${cate.id}.do"
                                                         id="labDelete">删除</a> ]
                                                 </td>
                                         </tr>
@@ -117,7 +118,7 @@
                         <dt><a href="http://www.cyqdata.com/songboriceboy/article">我的文章</a></dt>
                         <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/post">发表文章</a></dd>
                         <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/all">文章列表</a></dd>
-                        <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/class">文章分类</a></dd>
+                        <dd><a href="/cate/list_user_all_history.do">文章分类</a></dd>
                     </dl>
                     <dl>
                         <dt><a href="http://www.cyqdata.com/songboriceboy/photo/">我的相册</a></dt>

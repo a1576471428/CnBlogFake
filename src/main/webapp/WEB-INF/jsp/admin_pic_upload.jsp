@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>songboriceboy - 秋色园</title>
+    <title>${login_user.username} - 秋色园</title>
     <meta name="description" content="作者:路过秋天 http://cyq1162.cnblogs.com">
     <meta name="author" content="CYQ,CYQ.Data,CYQ.Blog">
     <meta name="copyright" content="2010-2020 www.cyqdata.com">
@@ -14,7 +14,7 @@
 <body>
 <div class="wrap">
     <div id="Node_HeaderNav">
-        <div class="header"><h1 class="space-name" id="labSpaceName">songboriceboy</h1>
+        <div class="header"><h1 class="space-name" id="labSpaceName">${login_user.username}</h1>
             <p class="space-desc" id="labSpaceIntro">作者:路过秋天 http://cyq1162.cnblogs.com</p>
             <p class="operate" id="headRightMenu"><a href="/user_home.do" id="labUserName"><img
                     src="/images/default1.jpg" align="absmiddle" width="16px" height="16px"

@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>songboriceboy - 秋色园</title>
+    <title>${login_user.username} - 秋色园</title>
     <meta name="description" content="作者:路过秋天 http://cyq1162.cnblogs.com">
     <meta name="author" content="CYQ,CYQ.Data,CYQ.Blog">
     <meta name="copyright" content="2010-2020 www.cyqdata.com">
@@ -16,7 +16,7 @@
 <body>
 <div class="wrap">
     <div id="Node_HeaderNav">
-        <div class="header"><h1 class="space-name" id="labSpaceName">${username}</h1>
+        <div class="header"><h1 class="space-name" id="labSpaceName">${login_user.username}</h1>
             <p class="space-desc" id="labSpaceIntro">作者:路过秋天 http://cyq1162.cnblogs.com</p>
             <p class="operate" id="headRightMenu"><a href="/user_home.do" id="labUserName"><img
                     src="/images/default1.jpg" align="absmiddle" width="16px" height="16px"
@@ -79,7 +79,7 @@
                     </dl>
                     <dl>
                         <dt><a href="http://www.cyqdata.com/songboriceboy/article">我的文章</a></dt>
-                        <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/post">发表文章</a></dd>
+                        <dd><a href="/article_edit.do">发表文章</a></dd>
                         <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/all">文章列表</a></dd>
                         <dd><a href="/cate/list_user_all_history.do">文章分类</a></dd>
                     </dl>

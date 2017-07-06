@@ -13,13 +13,29 @@
 -->
 
 <select id="getAllCateByUserId" parameterType="int" resultType="BlogClass">
-    SELECT * FROM blog_class WHERE UserID=#{VALUE }
+    SELECT * FROM blog_class WHERE UserID=#{VALUE } ORDER BY Count DESC , Name
 </select>
     <insert id="addCate" parameterType="BlogClass">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             select LAST_INSERT_ID()
         </selectKey>
-        insert into blog_class(userid,pkey,name,count, isvisible) values(#{userid},#{pkey},#{name},#{count},#{isvisible})
+        insert into blog_class(userid,pkey,name,count, isvisible, createTime)
+        values(#{userid}, #{pkey}, #{name}, #{count}, #{isvisible}, #{createtime})
     </insert>
 
+    <delete id="deleteCate" parameterType="int">
+        DELETE FROM blog_class WHERE ID=#{VALUE }
+    </delete>
+
+    <select id="getCateById" parameterType="int" resultType="BlogClass">
+        SELECT * FROM blog_class WHERE ID=#{VALUE }
+    </select>
+
+    <update id="editCate" parameterType="BlogClass">
+        UPDATE blog_class SET pkey=#{pkey},
+        name=#{name},
+        count=#{count},
+        IsVisible=#{isvisible}
+        WHERE id=#{id}
+    </update>
 </mapper>

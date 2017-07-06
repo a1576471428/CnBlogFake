@@ -10,4 +10,7 @@ import java.util.List;
 public interface CateMapper {
     List<BlogClass> getAllCateByUserId(int id);
     int addCate(BlogClass blogClass);
+    void deleteCate(int id);
+    BlogClass getCateById(int id);
+    void editCate(BlogClass blogClass);
 }

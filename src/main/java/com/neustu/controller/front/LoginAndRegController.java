@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 
 /**
  * Created by 15764 on 2017-07-03.
@@ -40,6 +41,7 @@ public class LoginAndRegController {
 
         if (request.getMethod().equals("POST")){
             blogUser = encryptPassword(blogUser);
+            blogUser.setCreatetime(new Date());
             try {
                 //注册失败会抛出用户已存在异常
                 blogUserMapper.regUser(blogUser);
@@ -92,6 +94,14 @@ public class LoginAndRegController {
             return view;
         }
 
+    }
+
+    @RequestMapping("logout.do")
+    public ModelAndView logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.setAttribute("login_user", null);
+        ModelAndView modelAndView = new ModelAndView("redirect:home.do");
+        return modelAndView;
     }
 
 
