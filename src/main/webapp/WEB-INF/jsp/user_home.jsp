@@ -39,14 +39,14 @@
                     <li><a id="logStatus" href="http://www.cyqdata.com/sys/login/LwBAjAHkAcQAxADEANgAyAA==">登录</a></li>
                 </c:if>
                 <c:if test="${!empty login_user}">
-                    <li><a id="login_user" href="http://www.cyqdata.com/sys/reg">${login_user.username}</a></li>
+                    <li><a id="login_user" href="/user_home.do">${login_user.username}</a></li>
                     <li><a id="logout" href="logout.do">注销</a></li>
                 </c:if>
             </ul>
             <ul class="menu" id="headMenu">
                 <li><a href="/home.do" id="labHomeUrl">秋色园</a></li>
                 <li><a href="/home.do" id="labIndexUrl">首页</a></li>
-                <li><a href="/admin.do?userid=${login_user.id}" id="labAdminUrl">管理</a></li>
+                <li><a href="/admin.do" id="labAdminUrl">管理</a></li>
                 <li><a target="_blank" href="http://www.cyqdata.com/cyq1162/rss" id="labRssUrl" class="last">Rss</a>
                 </li>
             </ul>

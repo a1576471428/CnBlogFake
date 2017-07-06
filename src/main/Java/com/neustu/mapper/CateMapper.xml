@@ -15,6 +15,11 @@
 <select id="getAllCateByUserId" parameterType="int" resultType="BlogClass">
     SELECT * FROM blog_class WHERE UserID=#{VALUE }
 </select>
-
+    <insert id="addCate" parameterType="BlogClass">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into blog_class(userid,pkey,name,count, isvisible) values(#{userid},#{pkey},#{name},#{count},#{isvisible})
+    </insert>
 
 </mapper>

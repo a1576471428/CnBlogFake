@@ -32,7 +32,7 @@ public class BlogClass {
 
   @AutoField(alias = "isvisible", column = "isvisible")
   @ExcelVOAttribute(name = "isvisible", column = "G")
-  private String isvisible;
+  private boolean isvisible;
 
 
   public int getId() {
@@ -71,10 +71,10 @@ public class BlogClass {
   public void setCount(int count){
     this.count = count;
   }
-  public String getIsvisible() {
+  public boolean getIsvisible() {
     return isvisible;
   }
-  public void setIsvisible(String isvisible){
+  public void setIsvisible(boolean isvisible){
     this.isvisible = isvisible;
   }
 }

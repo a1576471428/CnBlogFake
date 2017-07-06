@@ -39,19 +39,19 @@
                             <div class="title"></div>
                             <div class="cont">
                                 <div class="form-area">
-                                    <form method="post"><input type="hidden" id="myAct" name="myAct" value="PostClass">
+                                    <form method="post" action="add_cate.do"><input type="hidden" id="myAct" name="myAct" value="PostClass">
                                         <div class="form-item"><label for="txtName" class="label">名称</label>
-                                            <div class="input"><input type="text" id="txtName" name="txtName"
+                                            <div class="input"><input type="text" id="txtName" name="name"
                                                                       class="ipt-txt-1" value=""></div>
                                             <label for="txtPKey" class="label">外语名称</label>
-                                            <div class="input"><input type="text" id="txtPKey" name="txtPKey"
+                                            <div class="input"><input type="text" id="txtPKey" name="pkey"
                                                                       class="ipt-txt-1" value=""></div>
                                             <label for="txtSortNum" class="label">排序号</label>
-                                            <div class="input"><input type="text" id="txtSortNum" name="txtSortNum"
+                                            <div class="input"><input type="text" id="txtSortNum" name="count"
                                                                       class="ipt-txt-1" value=""></div>
-                                            <label for="txtIsVisible" class="label">显示</label>
-                                            <div class="input"><input type="checkbox" name="txtIsVisible"
-                                                                      id="txtIsVisible" class="ipt-box"></div>
+                                            <label for="isVisible" class="label">显示</label>
+                                            <div class="input"><input type="checkbox" name="isvisible"
+                                                                      id="isVisible" class="ipt-box"></div>
                                         </div>
                                         <div class="form-item"><label for="txtDescription" class="label">描述</label>
                                             <div class="input"><input type="text" id="txtDescription"
@@ -78,7 +78,7 @@
                                                 <tr>
                                                 <td class="tit"><a
                                                             href="http://www.cyqdata.com/songboriceboy/admin/photo-cate-1261"
-                                                            id="labName" title="">${index_object.index+1} : ${cate}</a> | <input type="checkbox"
+                                                            id="labName" title="">${index_object.index+1} : ${cate.name}</a> | <input type="checkbox"
                                                                                                                                  checked="checked"
                                                                                                                                  id="labIsVisible"
                                                                                                                                  disabled="disabled">

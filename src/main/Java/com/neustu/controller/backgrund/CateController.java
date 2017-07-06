@@ -45,4 +45,27 @@ public class CateController {
         modelAndView.setViewName("admin_article_cate_list");
         return modelAndView;
     }
+
+    @RequestMapping("add_cate.do")
+    public ModelAndView addCate(BlogClass blogClass, HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
+        HttpSession session = request.getSession();
+        BlogUser user =(BlogUser) session.getAttribute("login_user");
+        if (blogClass != null) {
+            if (user != null) {
+                modelAndView.setViewName("redirect:" + "list_user_all_history.do");
+                blogClass.setUserid(user.getId());
+                cateMapper.addCate(blogClass);
+            } else {
+                modelAndView.setViewName("redirect:" + "/user_home.do");
+                modelAndView.addObject("msg", "请先登录！");
+            }
+        }
+        else {
+            modelAndView.setViewName("redirect:" + "list_user_all_history.do");
+        }
+        return modelAndView;
+
+
+    }
 }

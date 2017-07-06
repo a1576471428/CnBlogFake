@@ -71,8 +71,7 @@ public class LoginAndRegController {
             blogUser = encryptPassword(blogUser);
             user = blogUserMapper.loginUser(blogUser);
             if (user != null) {
-                System.out.println(user.getUsername());
-                System.out.println(user.getPassword());
+
                 ModelAndView view = new ModelAndView("redirect:"+"/user_home.do");
                 HttpSession httpSession = request.getSession();
                 httpSession.setAttribute("login_user", user);//保存用户
