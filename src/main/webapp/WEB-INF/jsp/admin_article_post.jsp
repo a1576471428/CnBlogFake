@@ -19,17 +19,15 @@
     <div id="Node_HeaderNav">
         <div class="header"><h1 class="space-name" id="labSpaceName">songboriceboy</h1>
             <p class="space-desc" id="labSpaceIntro">作者:路过秋天 http://cyq1162.cnblogs.com</p>
-            <p class="operate" id="headRightMenu"><a href="http://www.cyqdata.com/songboriceboy" id="labUserName"><img
-                    src="./admin_article_post_files/default1.jpg" align="absmiddle" width="16px" height="16px"
-                    border="0"> <b>songboriceboy</b> </a> | <a href="http://www.cyqdata.com/sys/logout" id="logStatus">注销</a>
-                | <a href="http://www.cyqdata.com/songboriceboy/admin/article/post-chinese">中文</a> | <a
-                        href="http://www.cyqdata.com/songboriceboy/admin/article/post-english">English</a></p></div>
+            <p class="operate" id="headRightMenu"><a href="/user_home.do" id="labUserName"><img
+                    src="/images/default1.jpg" align="absmiddle" width="16px" height="16px"
+                    border="0"> <b>${login_user.username}</b> </a> | <a href="logout" id="logStatus">注销</a></p></div>
         <div class="nav">
             <ul id="headMenu">
                 <li><a href="/home.do">秋色园</a></li>
-                <li><a href="http://www.cyqdata.com/songboriceboy" id="labIndexUrl">首页</a></li>
+                <li><a href="/user_home.do" id="labIndexUrl">首页</a></li>
                 <li><a href="http://www.cyqdata.com/songboriceboy/photo">相片</a></li>
-                <li><a href="http://www.cyqdata.com/songboriceboy/admin">管理</a></li>
+                <li><a href="admin.do?userid=${login_usr.id}">管理</a></li>
             </ul>
         </div>
     </div>

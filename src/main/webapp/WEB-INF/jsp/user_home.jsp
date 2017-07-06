@@ -42,8 +42,6 @@
                     <li><a id="login_user" href="http://www.cyqdata.com/sys/reg">${login_user.username}</a></li>
                     <li><a id="logout" href="logout.do">注销</a></li>
                 </c:if>
-                <li><a href="http://www.cyqdata.com/cyq1162-chinese">中文</a></li>
-                <li><a href="http://www.cyqdata.com/cyq1162-english">English</a></li>
             </ul>
             <ul class="menu" id="headMenu">
                 <li><a href="/home.do" id="labHomeUrl">秋色园</a></li>

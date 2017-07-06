@@ -74,8 +74,7 @@
 </head>
 <body>
 <div style="text-align: right; margin-right: 8px;margin-top:8px;"><a id="labUserName" href="/home.do">anonymous</a>
-    | <a id="logStatus" href="/login.do">登录</a> | <a href="http://www.cyqdata.com/lang-chinese">中文</a>
-    | <a href="http://www.cyqdata.com/lang-english">English</a></div>
+    | <a id="logStatus" href="/login.do">登录</a>
 <div style="width: 800px; margin: 100px auto;"><h1 style="font-size: xx-large; color: #99ccff; font-style: italic;">
     Login To Enter QBlog</h1>
     <div style="margin: auto; text-align: center;margin-top: 50px;">
@@ -96,7 +95,7 @@
                     <td class="tdright"></td>
                     <td class="tdleft" colspan="2"><input id="btnLogin" name="btnLogin" type="submit" value="登录" style="width: 71px;
 								margin-left: 10px; cursor: pointer; padding-top: 2px;"><a
-                            href="http://www.cyqdata.com/sys/reg" style="margin-left: 10px;">注册</a> |
+                            href="/reg.do" style="margin-left: 10px;">注册</a> |
                         <a href="http://www.cyqdata.com/sys/getpassword" style="margin-left: 2px;">找回密码</a></td>
                 </tr>
                 <tr>

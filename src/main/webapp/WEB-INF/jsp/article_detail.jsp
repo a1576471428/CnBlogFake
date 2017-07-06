@@ -35,12 +35,14 @@
         <div id="body_header"><h1 id="labSpaceName">路过秋天</h1>
             <h2 id="labSpaceIntro">同样的3年，有的人从学生到当了MVP了，而我却在原地，卖弄当年的代码，秋天的风，有点凄，有点凉！</h2>
             <ul class="personalnav" id="headRightMenu">
-                <li><a id="labUserName" href="/reg.do">游客[注册]</a></li>
-                <li><a id="logStatus"
-                       href="login.do">登录</a>
-                </li>
-                <li><a href="http://www.cyqdata.com/cyq1162/article-detail-58060-chinese">中文</a></li>
-                <li><a href="http://www.cyqdata.com/cyq1162/article-detail-58060-english">English</a></li>
+                <c:if test="${empty login_user}">
+                    <a href="reg.do">游客[注册]</a> | <a
+                        href="login.do">登录</a>
+                </c:if>
+                <c:if test="${!empty login_user}">
+                    <a href="user_home.do">${login_user.username}</a> | <a
+                        href="logout.do">注销</a>
+                </c:if>
             </ul>
             <ul class="menu" id="headMenu">
                 <li><a href="/home.do" id="labHomeUrl">秋色园</a></li>
