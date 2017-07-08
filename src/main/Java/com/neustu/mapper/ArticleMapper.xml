@@ -16,9 +16,9 @@
             select LAST_INSERT_ID()
         </selectKey>
         INSERT INTO blog_content(title, body, createtime, userid, classid, _abstract, tag,
-        commentlevel, isrss, ispub, istop, ismain, sysclassid)
+        commentlevel, isrss, ispub, istop, ismain, sysclassid, edittime)
         VALUES (#{title}, #{body}, #{createtime}, #{userid}, #{classid}, #{_abstract}, #{tag},
-        #{commentlevel}, #{isrss}, #{ispub}, #{istop}, #{ismain}, #{sysclassid})
+        #{commentlevel}, #{isrss}, #{ispub}, #{istop}, #{ismain}, #{sysclassid}, #{edittime})
     </insert>
 
     <select id="getAllArticles" resultType="BlogContent">
@@ -30,8 +30,24 @@
         WHERE blog_content.UserID=#{VALUE } and blog_content.ClassID=blog_class.id
     </select>
 
-    <select id="getUserAllArticle" parameterType="int" resultType="BlogContent">
+
+    <select id="getUserAllArticles" parameterType="int" resultType="BlogContent">
         SELECT * FROM blog_content WHERE UserID=#{VALUE }
     </select>
+
+    <select id="getArticleById" parameterType="int" resultType="BlogContent">
+        SELECT * FROM blog_content WHERE id=#{id}
+    </select>
+
+
+    <update id="updateArticle" parameterType="BlogContent">
+
+        update  blog_content set title=#{title}, body=#{body},
+        edittime= #{edittime},
+        classid=#{classid}, _abstract= #{_abstract}, tag= #{tag},
+        commentlevel= #{commentlevel}, isrss= #{isrss}, ispub=#{ispub},
+        istop=#{istop}, ismain= #{ismain}, sysclassid=#{sysclassid}
+        WHERE id=#{id}
+    </update>
 
 </mapper>

@@ -1,5 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -49,38 +51,26 @@
                                         </tbody>
                                         <tbody id="labArticleList">
                                         <tr>
-                                            <td class="tit"><a
-                                                    href="http://www.cyqdata.com/songboriceboy/article-detail-54474"
-                                                    id="labTitle" target="_blank">ArcGIS10.2.2 Desktop直接连接数据库的具体步</a>
-                                            </td>
-                                            <td id="labCreateTime">2015-2-15 14:04:35</td>
-                                            <td>[ <span id="labIsPub">已发布</span> ]<br>[ <span
-                                                    id="labHits">浏览(184)</span> | <span
-                                                    id="labCommentCount">评论(0)</span> ]
-                                            </td>
-                                            <td>[ <a
-                                                    href="http://www.cyqdata.com/songboriceboy/admin/article-edit-54474"
-                                                    id="labEdit">编辑</a> | <a
-                                                    href="http://www.cyqdata.com/songboriceboy/admin/article-del-54474"
-                                                    id="labDelete">删除</a> ]
-                                            </td>
+                                            <c:forEach items="${articles}" var="article" >
+                                                <td class="tit"><a
+                                                        href="/article_detail/${article.id}.do"
+                                                        id="labTitle" target="_blank">${article.title}</a>
+                                                </td>
+                                                <td id="labCreateTime">${article.createtime}</td>
+                                                <td>[ <span id="labIsPub"><c:if test="${article.ispub}">已发布</c:if>
+                                                    <c:if test="${!article.ispub}">未发布</c:if>
+                                                </span> ]<br>[ <span
+                                                        id="labHits">浏览(184)</span> | <span
+                                                        id="labCommentCount">评论(0)</span> ]
+                                                </td>
+                                                <td>[ <a
+                                                        href="/article_edit/${article.id}.do"
+                                                        id="labEdit">编辑</a> | <a
+                                                        href="/article_delete/${article.id}.do"
+                                                        id="labDelete">删除</a> ]
+                                                </td>
                                         </tr>
-                                        <tr>
-                                            <td class="tit"><a
-                                                    href="http://www.cyqdata.com/songboriceboy/article-detail-54308"
-                                                    id="labTitle" target="_blank">test1111111111111</a></td>
-                                            <td id="labCreateTime">2012-12-23 13:24:09</td>
-                                            <td>[ <span id="labIsPub">已发布</span> ]<br>[ <span
-                                                    id="labHits">浏览(555)</span> | <span
-                                                    id="labCommentCount">评论(0)</span> ]
-                                            </td>
-                                            <td>[ <a
-                                                    href="http://www.cyqdata.com/songboriceboy/admin/article-edit-54308"
-                                                    id="labEdit">编辑</a> | <a
-                                                    href="http://www.cyqdata.com/songboriceboy/admin/article-del-54308"
-                                                    id="labDelete">删除</a> ]
-                                            </td>
-                                        </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

@@ -13,5 +13,7 @@ public interface ArticleMapper {
     BlogContent getArticleById(int id);
     void updateArticle(BlogContent blogContent);
     List<BlogContent> getAllArticles();//todo offset, rows
-    List<BlogClass> getUserAllCates(int userId);
+    List<BlogContent> getUserAllArticles(int userId);//todo offset, rows
+
+
 }

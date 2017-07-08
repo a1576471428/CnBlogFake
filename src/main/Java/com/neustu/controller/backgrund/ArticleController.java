@@ -5,12 +5,14 @@ import com.neustu.mapper.CateMapper;
 import com.neustu.po.BlogClass;
 import com.neustu.po.BlogContent;
 import com.neustu.po.BlogUser;
+import com.sun.org.apache.regexp.internal.RE;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,8 +54,9 @@ public class ArticleController {
         article.setBody(body);
         article.setCreatetime(new Date());
         article.setUserid(getUserId(request));
+        article.setEdittime(new Date());
         articleMapper.addArticle(article);
-        modelAndView.setViewName("redirect:add_article.do");
+        modelAndView.setViewName("redirect:/article_list.do");
         return modelAndView;
     }
 
@@ -66,21 +69,39 @@ public class ArticleController {
     }
 
 
-    @RequestMapping("edit_article.do")
-    public ModelAndView edit_article(@RequestParam("title")String title,
-                                     @RequestParam("editorValue")String body,
-                                     @RequestParam("id")int id,
+    @RequestMapping("/article_edit/{articleId}.do")
+    public ModelAndView edit_article(@PathVariable("articleId")int articleId,
                                      HttpServletRequest request){
-        return null;
+        ModelAndView modelAndView= new ModelAndView();
+        BlogContent article = articleMapper.getArticleById(articleId);
+        List<BlogClass> cateList = cateMapper.getAllCateByUserId(getUserId(request));
+
+        modelAndView.setViewName("admin_article_edit");
+        modelAndView.addObject("cates", cateList);
+        modelAndView.addObject("article", article);
+        return modelAndView;
     }
 
-    @RequestMapping("get_article.do")
-    public void getArticle(HttpServletResponse response) throws IOException{
-        PrintWriter writer = response.getWriter();
-        response.setContentType("text/html;charset=UTF-8");
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("data", "妈的智障啊");
-        writer.print(jsonObject.toString());
+    @RequestMapping("edit_article_post.do")
+    public ModelAndView editArticlePost(BlogContent article,
+                                @RequestParam("_abstract")String _abstract,
+                                @RequestParam("editorValue")String body,
+                                HttpServletRequest request) throws IOException{
+        ModelAndView modelAndView = new ModelAndView();
+        article.set_abstract(_abstract);
+        article.setBody(body);
+        article.setEdittime(new Date());
+        articleMapper.updateArticle(article);
+        modelAndView.setViewName("redirect:/article_list.do");
+        return modelAndView;
+    }
+
+    @RequestMapping("/article_list.do")
+    public ModelAndView articleList(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView("admin_article_list");
+        List<BlogContent> articles = articleMapper.getUserAllArticles(getUserId(request));
+        modelAndView.addObject("articles", articles);
+        return modelAndView;
     }
 
     private int getUserId(HttpServletRequest request){

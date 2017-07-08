@@ -1,5 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,7 +9,7 @@
     <meta name="description" content="作者:路过秋天 http://cyq1162.cnblogs.com">
     <meta name="author" content="CYQ,CYQ.Data,CYQ.Blog">
     <meta name="copyright" content="2010-2020 www.cyqdata.com">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link href="/css/style.css" type="text/css" rel="stylesheet">
     <link href="./admin_article_edit_files/editor.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="./admin_article_edit_files/editor.js"></script>
     <noscript>&lt;meta http-equiv="refresh" content="0;url=/songboriceboyarticle-edit-54474/nojs" /&gt;</noscript>
@@ -48,64 +50,120 @@
     <div class="content clearfix">
         <div class="main-wrap">
             <div class="main">
-                <form action="${pageContext.request.contextPath}/add_article.do" method="post"
-                      target="_blank">
-                    <h1>完整demo</h1>
-                    <input type="hidden" name="id" value="${article.id}">
-                    标题： <input type="text" name="title" value="${article.title}">
-
-                    <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
-                    <input type="submit" value="保存博文">
-                        </form>
-
+                <form method="post" enctype="multipart/form-data" action="/edit_article_post.do"><input type="hidden" id="id"
+                                                                                                      name="id"
+                                                                                                      value="${article.id}">
+                    <div class="form-area"><a target="_blank" id="txtTitleLink"
+                                              style="margin-left: 45px;"></a>
+                        <div class="form-item"><label for="txtTitle" class="label">标题</label>
+                            <div class="input"><input type="text" id="txtTitle" name="title"
+                                                      class="ipt-txt-2" value="${article.title}"></div>
                         </div>
-
-                        <%--<script type="text/javascript">--%>
-
-
-                        <%--$(function () {--%>
-                            <%--var ue = UE.getEditor('editor');--%>
-
-
-                            <%--//判断ueditor 编辑器是否创建成功--%>
-                            <%--ue.addListener("ready", function () {--%>
-                                <%--// editor准备好之后才可以使用--%>
-                                <%--$.ajax({--%>
-                                    <%--url: '${pageContext.request.contextPath}/ajax_get_article.do',--%>
-                                    <%--type: 'GET', //GET--%>
-                                    <%--async: true,    //或false,是否异步--%>
-                                    <%--data: {--%>
-                                        <%--id: '${article.id}'--%>
-                                    <%--},--%>
-                                    <%--timeout: 5000,    //超时时间--%>
-                                    <%--dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text--%>
-                                    <%--beforeSend: function (xhr) {--%>
-                                        <%--console.log(xhr)--%>
-                                        <%--console.log('发送前')--%>
-                                    <%--},--%>
-                                    <%--success: function (data, textStatus, jqXHR) {--%>
-                                        <%--console.log(data)--%>
-                                        <%--ue.setContent(data.data);--%>
-                                        <%--console.log(textStatus)--%>
-                                        <%--console.log(jqXHR)--%>
-                                    <%--},--%>
-                                    <%--error: function (xhr, textStatus) {--%>
-                                        <%--console.log('错误')--%>
-                                        <%--console.log(xhr)--%>
-                                        <%--console.log(textStatus)--%>
-                                    <%--},--%>
-                                    <%--complete: function () {--%>
-                                        <%--console.log('结束')--%>
-                                    <%--}--%>
-                                <%--})--%>
-                                <%--// ue.setContent(content);--%>
-
-                            <%--});--%>
-                        <%--});--%>
-
-                    <%--</script>--%>
-
+                        <div class="form-item"><label for="txtClassID" class="label">分类</label>
+                            <div class="operate"><select id="txtClassID" name="classid"
+                                                         class="select-2" >
+                                <c:forEach items="${cates}" var="cate" >
+                                    <option value="${cate.id}" <c:if test="${article.classid}==${cate.id}">selected="selected"</c:if>>${cate.name}</option>
+                                </c:forEach>
+                            </select></div>
+                            <span class="tip-desc"><a id="labName"
+                                                      href="/cate/list_user_all_history.do">创建分类</a></span>
+                        </div>
+                        <div class="form-item"><label for="txtTitle" class="label">Tag</label>
+                            <div class="input"><input type="text" id="txtTag" name="tag"
+                                                      class="ipt-txt-2"
+                                                      value="${article.tag}"><span>（关键字用“,”号分隔）</span></div>
+                        </div>
+                        <div class="form-item checkbox-list"><label for="txtIsPub"><input
+                                type="checkbox" name="ispub" id="txtIsPub" class="ipt-box" value="${article.ispub}">
+                            <labe>发布</labe>
+                        </label>
+                            |
+                            <label for="txtIsTop"><input type="checkbox" name="istop" id="txtIsTop"
+                                                         class="ipt-box"><label>置顶</label></label>
+                            |
+                            <label for="txtIsRss"><input type="checkbox" name="isrss" id="txtIsRss"
+                                                         class="ipt-box"><label>Rss</label></label><label
+                                    id="txtUpdateCreateTime" style="display:none">
+                                |
+                                <input type="checkbox" name="txtUpdateCreateTime"
+                                       class="ipt-box"><label>更新发布时间</label></label><input type="hidden"
+                                                                                           name="hidIsPub"
+                                                                                           value="0"><input
+                                    type="hidden" name="hidIsTop" value="0"><input type="hidden"
+                                                                                   name="hidIsRss"
+                                                                                   value="${article.isrss}"><input
+                                    type="hidden" name="hidIsMain" value="0"><font color="red"
+                                                                                   class="ipt-box"
+                                                                                   style="margin-left: 10px;">[温馨提示：提交文章前，请先复制一下内容，避免提交失败时那个纠心！]</font>
+                        </div>
+                        <div class="form-item article-content" id="labEditor">
+                            <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+                            <script type="text/javascript">
+                                $(function () {
+                                    var ue = UE.getEditor('editor');
+                                    ue.addListener("ready", function () {
+                                        ue.setContent("${article.body}");
+                                        console.log("${article.id}");
+                                    });
+                                });
+                            </script>
+                        </div>
+                        <div class="form-item checkbox-list"><input id="txtIsMain" name="ismain"
+                                                                    type="checkbox"
+                                                                    class="ipt-box" value="${article.ismain}"><label
+                                for="txtIsMain">显示在系统首页</label>
+                            |
+                            <label for="txtSysClassID">系统分类</label>：
+                            <select id="txtSysClassID" name="sysclassid" >
+                                <option value="1" <c:if test="${article.sysclassid}==1">selected="selected"</c:if>>中文技术</option>
+                                <option value="2" <c:if test="${article.sysclassid}==2">selected="selected"</c:if>>英文技术</option>
+                                <option value="3" <c:if test="${article.sysclassid}==3">selected="selected"</c:if>>心理学</option>
+                                <option value="4" <c:if test="${article.sysclassid}==4">selected="selected"</c:if>>生理学</option>
+                                <option value="5" <c:if test="${article.sysclassid}==5">selected="selected"</c:if>>保健类</option>
+                                <option value="6" <c:if test="${article.sysclassid}==6">selected="selected"</c:if>>教育类</option>
+                                <option value="7" <c:if test="${article.sysclassid}==7">selected="selected"</c:if>>和谐区</option>
+                                <option value="8" <c:if test="${article.sysclassid}==8">selected="selected"</c:if>>私语区</option>
+                                <option value="9" <c:if test="${article.sysclassid}==9">selected="selected"</c:if>>QBlog开发</option>
+                                <option value="10" <c:if test="${article.sysclassid}==10">selected="selected"</c:if>>非技术</option>
+                            </select>
+                            |
+                            <label for="txtLanguageID">语言</label>：
+                            <select id="txtLanguageID" name="txtLanguageID"
+                                    class="TextSelect TextSelect_Style">
+                                <option value="1">中文</option>
+                                <option value="2">English</option>
+                            </select>
+                            |
+                            <label for="txtCommentLevel">评论设置</label>：
+                            <select id="txtCommentLevel" name="commentlevel"
+                                    class="TextSelect TextSelect_Style">
+                                <option value="0" <c:if test="${article.commentlevel}==0">selected="selected"</c:if>>允许所有人评论</option>
+                                <option value="1" <c:if test="${article.commentlevel}==1">selected="selected"</c:if>>只允许注册用户评论</option>
+                                <option value="2" <c:if test="${article.commentlevel}==2">selected="selected"</c:if>>关闭评论</option>
+                            </select></div>
+                        <div class="form-item" style="display:none;"><label class="label">
+                            Logo</label>
+                            <div class="operate"><input id="labUpLoad" name="labUpLoad" type="file"
+                                                        class="ipt-file"><label for="txtIsRss"><input
+                                    type="checkbox" name="txtRemovePic" id="txtRemovePic"
+                                    class="ipt-box"><label>移除图片</label></label></div>
+                        </div>
+                        <div class="form-item"><label for="txtAbstract"
+                                                      class="label">摘要</label><textarea id="txtAbstract"
+                                                                                        name="_abstract"
+                                                                                        class="textarea-2"
+                                                                                        cols="30"
+                                                                                        rows="5">${article._abstract}</textarea>
+                        </div>
+                        <div class="form-btn"><input type="submit" value="提交"></div>
+                    </div>
+                </form>
         </div>
+        </div>
+
+
+
         <div class="aside" id="Node_AdminMenu">
             <div class="mod admin-menu">
                 <div class="hd"><h2>管理菜单</h2></div>

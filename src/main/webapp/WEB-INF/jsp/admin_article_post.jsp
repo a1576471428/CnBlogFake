@@ -71,7 +71,7 @@
                                                 </c:forEach>
                                             </select></div>
                                             <span class="tip-desc"><a id="labName"
-                                                                      href="http://www.cyqdata.com/songboriceboy/admin/article/class">创建分类</a></span>
+                                                                      href="/cate/list_user_all_history.do">创建分类</a></span>
                                         </div>
                                         <div class="form-item"><label for="txtTitle" class="label">Tag</label>
                                             <div class="input"><input type="text" id="txtTag" name="tag"
@@ -104,7 +104,9 @@
                                         <div class="form-item article-content" id="labEditor">
                                             <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
                                             <script type="text/javascript">
-                                            var ue = UE.getEditor('editor');
+                                                $(function () {
+                                                    var ue = UE.getEditor('editor');
+                                                });
                                             </script>
                                         </div>
                                         <div class="form-item checkbox-list"><input id="txtIsMain" name="ismain"
