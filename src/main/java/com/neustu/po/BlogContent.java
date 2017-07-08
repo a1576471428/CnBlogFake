@@ -22,7 +22,7 @@ public class BlogContent {
   @ExcelVOAttribute(name = "title", column = "D")
   private String title;
   private String body;
-  private String Abstract;
+  private String _abstract;
 
   @AutoField(alias = "tag", column = "tag", length = 255)
   @ExcelVOAttribute(name = "tag", column = "G")
@@ -62,19 +62,19 @@ public class BlogContent {
 
   @AutoField(alias = "isrss", column = "isrss")
   @ExcelVOAttribute(name = "isrss", column = "P")
-  private String isrss;
+  private boolean isrss;
 
   @AutoField(alias = "ispub", column = "ispub")
   @ExcelVOAttribute(name = "ispub", column = "Q")
-  private String ispub;
+  private boolean ispub;
 
   @AutoField(alias = "istop", column = "istop")
   @ExcelVOAttribute(name = "istop", column = "R")
-  private String istop;
+  private boolean istop;
 
   @AutoField(alias = "ismain", column = "ismain")
   @ExcelVOAttribute(name = "ismain", column = "S")
-  private String ismain;
+  private boolean ismain;
 
   @AutoField(alias = "sysclassid", column = "sysclassid", type = "Integer")
   @ExcelVOAttribute(name = "sysclassid", column = "T")
@@ -111,12 +111,7 @@ public class BlogContent {
   public void setBody(String body){
     this.body = body;
   }
-  public String getAbstract() {
-    return Abstract;
-  }
-  public void setAbstract(String _abstract){
-    this.Abstract = _abstract;
-  }
+
   public String getTag() {
     return tag;
   }
@@ -171,28 +166,28 @@ public class BlogContent {
   public void setHits(int hits){
     this.hits = hits;
   }
-  public String getIsrss() {
+  public boolean getIsrss() {
     return isrss;
   }
-  public void setIsrss(String isrss){
+  public void setIsrss(boolean isrss){
     this.isrss = isrss;
   }
-  public String getIspub() {
+  public boolean getIspub() {
     return ispub;
   }
-  public void setIspub(String ispub){
+  public void setIspub(boolean ispub){
     this.ispub = ispub;
   }
-  public String getIstop() {
+  public boolean getIstop() {
     return istop;
   }
-  public void setIstop(String istop){
+  public void setIstop(boolean istop){
     this.istop = istop;
   }
-  public String getIsmain() {
+  public boolean getIsmain() {
     return ismain;
   }
-  public void setIsmain(String ismain){
+  public void setIsmain(boolean ismain){
     this.ismain = ismain;
   }
   public int getSysclassid() {
@@ -201,4 +196,11 @@ public class BlogContent {
   public void setSysclassid(int sysclassid){
     this.sysclassid = sysclassid;
   }
+  public String get_abstract() {
+    return _abstract;
+  }
+  public void set_abstract(String _abstract) {
+    this._abstract = _abstract;
+  }
+
 }

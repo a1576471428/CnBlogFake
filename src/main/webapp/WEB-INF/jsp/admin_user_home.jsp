@@ -78,9 +78,9 @@
                         <dd><a href="http://www.cyqdata.com/songboriceboy/admin/link">友情链接</a></dd>
                     </dl>
                     <dl>
-                        <dt><a href="http://www.cyqdata.com/songboriceboy/article">我的文章</a></dt>
-                        <dd><a href="/article_edit.do">发表文章</a></dd>
-                        <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/all">文章列表</a></dd>
+                        <dt><a href="/article_list.do">我的文章</a></dt>
+                        <dd><a href="/add_article.do">发表文章</a></dd>
+                        <dd><a href="/article_list.do">文章列表</a></dd>
                         <dd><a href="/cate/list_user_all_history.do">文章分类</a></dd>
                     </dl>
                     <dl>

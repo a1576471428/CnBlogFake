@@ -60,10 +60,6 @@ public class HomeController {
 
     @RequestMapping("ajax_get_article.do")
     public void ajax_get_article(HttpServletResponse response) throws IOException{
-        PrintWriter writer = response.getWriter();
-        response.setContentType("text/html;charset=UTF-8");
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("data", "妈的智障啊");
-        writer.print(jsonObject.toString());
+
     }
 }

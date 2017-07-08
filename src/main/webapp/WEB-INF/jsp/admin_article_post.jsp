@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,6 +15,17 @@
     <noscript>&lt;meta http-equiv="refresh" content="0;url=/songboriceboyarticle-post/nojs" /&gt;</noscript>
     <link rel="shortcut icon" href="http://www.cyqdata.com/skin/global/favicon.ico">
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.cyqdata.com/songboriceboy/rsd">
+    <script type="text/javascript" charset="utf-8"
+            src="${pageContext.request.contextPath}/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="${pageContext.request.contextPath}/ueditor/ueditor.all.min.js"></script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8"
+            src="${pageContext.request.contextPath}/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="${pageContext.request.contextPath}/ueditor/third-party/jquery-1.10.2.min.js"></script>
+
 </head>
 <body>
 <div class="wrap">
@@ -41,37 +54,39 @@
                     <div class="bd">
                         <div class="mod-2 article-post">
                             <div class="cont">
-                                <form method="post" enctype="multipart/form-data"><input type="hidden" id="myAct"
+                                <form method="post" enctype="multipart/form-data" action="add_article_post.do"><input type="hidden" id="myAct"
                                                                                          name="myAct"
                                                                                          value="PostArticle">
                                     <div class="form-area"><a target="_blank" id="txtTitleLink"
                                                               style="margin-left: 45px;"></a>
                                         <div class="form-item"><label for="txtTitle" class="label">标题</label>
-                                            <div class="input"><input type="text" id="txtTitle" name="txtTitle"
+                                            <div class="input"><input type="text" id="txtTitle" name="title"
                                                                       class="ipt-txt-2" value=""></div>
                                         </div>
                                         <div class="form-item"><label for="txtClassID" class="label">分类</label>
-                                            <div class="operate"><select id="txtClassID" name="txtClassID"
+                                            <div class="operate"><select id="txtClassID" name="classid"
                                                                          class="select-2">
-                                                <option value="1260">MyQBlog</option>
+                                                <c:forEach items="${cates}" var="cate" >
+                                                    <option value="${cate.id}">${cate.name}</option>
+                                                </c:forEach>
                                             </select></div>
                                             <span class="tip-desc"><a id="labName"
                                                                       href="http://www.cyqdata.com/songboriceboy/admin/article/class">创建分类</a></span>
                                         </div>
                                         <div class="form-item"><label for="txtTitle" class="label">Tag</label>
-                                            <div class="input"><input type="text" id="txtTag" name="txtTag"
+                                            <div class="input"><input type="text" id="txtTag" name="tag"
                                                                       class="ipt-txt-2"
                                                                       value=""><span>（关键字用“,”号分隔）</span></div>
                                         </div>
                                         <div class="form-item checkbox-list"><label for="txtIsPub"><input
-                                                type="checkbox" name="txtIsPub" id="txtIsPub" class="ipt-box">
+                                                type="checkbox" name="ispub" id="txtIsPub" class="ipt-box">
                                             <labe>发布</labe>
                                         </label>
                                             |
-                                            <label for="txtIsTop"><input type="checkbox" name="txtIsTop" id="txtIsTop"
+                                            <label for="txtIsTop"><input type="checkbox" name="istop" id="txtIsTop"
                                                                          class="ipt-box"><label>置顶</label></label>
                                             |
-                                            <label for="txtIsRss"><input type="checkbox" name="txtIsRss" id="txtIsRss"
+                                            <label for="txtIsRss"><input type="checkbox" name="isrss" id="txtIsRss"
                                                                          class="ipt-box"><label>Rss</label></label><label
                                                     id="txtUpdateCreateTime" style="display:none">
                                                 |
@@ -87,236 +102,28 @@
                                                                                                    style="margin-left: 10px;">[温馨提示：提交文章前，请先复制一下内容，避免提交失败时那个纠心！]</font>
                                         </div>
                                         <div class="form-item article-content" id="labEditor">
-                                            <div id="Editor_Div" class="deditor" style="width:720px; height:500px;">
-                                                <div class="toolbar" id="toolbar"
-                                                     style="background:url(http://www.cyqdata.com/editor/images/toolbar_bg.gif) repeat-x">
-                                                    <div class="toolbar_start"><img
-                                                            src="./admin_article_post_files/start.gif"></div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="Bold"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="加粗"
-                                                                                  onclick="deditorClass.FontBold()"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/bold.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="Italic"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="斜体"
-                                                                                  onclick="deditorClass.FontItalic()"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/italic.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="UnderLine"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="下划线"
-                                                                                  onclick="deditorClass.FontUnderLine()"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/underline.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="Code"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="加边框"
-                                                                                  onclick="deditorClass.SetTextCode()"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/code.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="InsertFile"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="插入文件"
-                                                                                  onclick="deditorClass.InsertTypeData(this,&#39;InsertFile&#39;,340,&#39;/Upload/Editor/&#39;)"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/file.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="InsertImage"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="插入图片"
-                                                                                  onclick="deditorClass.InsertTypeData(this,&#39;InsertImage&#39;,340,&#39;/Upload/Editor/&#39;)"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/image.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="InsertFlash"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="插入Flash"
-                                                                                  onclick="deditorClass.InsertTypeData(this,&#39;InsertFlash&#39;,340,&#39;/Upload/Editor/&#39;)"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/flash.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="InsertLink"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="插入链接"
-                                                                                  onclick="deditorClass.InsertTypeData(this,&#39;InsertLink&#39;,280,&#39;/Upload/Editor/&#39;)"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/link.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="InsertUnlink"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="取消链接"
-                                                                                  onclick="deditorClass.InsertUnlink()"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/unlink.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="RemoveFormat"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="清除格式"
-                                                                                  onclick="deditorClass.RemoveFormats()"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/removeformat.gif">
-                                                    </div>
-                                                    <div class="toolbar_div"><img class="toolbar_ico" id="InsertSmiley"
-                                                                                  onmouseover="deditorClass.OverIco(this)"
-                                                                                  title="插入表情"
-                                                                                  onclick="deditorClass.InsertTypeData(this,&#39;InsertSmiley&#39;,134,&#39;/Upload/Editor/&#39;)"
-                                                                                  onmouseout="deditorClass.OutIco(this)"
-                                                                                  src="./admin_article_post_files/smiley.gif">
-                                                    </div>
-                                                    <div class="toolbar_div">
-                                                        <div class="toolbar_text"><select id="dropFontName" title="选择字体"
-                                                                                          onchange="deditorClass.SetFontName()">
-                                                            <option value="">字体</option>
-                                                            <option value="宋体">宋体</option>
-                                                            <option value="楷体_GB2312">楷体</option>
-                                                            <option value="新宋体">新宋体</option>
-                                                            <option value="黑体">黑体</option>
-                                                            <option value="隶书">隶书</option>
-                                                            <option value="Andale Mono">Andale Mono</option>
-                                                            <option value="Arial">Arial</option>
-                                                            <option value="Arial Black">Arial Black</option>
-                                                            <option value="Book Antiqua">Book Antiqua</option>
-                                                            <option value="Century Gothic">Century Gothic</option>
-                                                            <option value="Comic Sans MS">Comic Sans MS</option>
-                                                            <option value="Courier New">Courier New</option>
-                                                            <option value="Georgia">Georgia</option>
-                                                            <option value="Impact">Impact</option>
-                                                            <option value="Tahoma">Tahoma</option>
-                                                            <option value="Times New Roman">Times New Roman</option>
-                                                            <option value="Trebuchet MS">Trebuchet MS</option>
-                                                            <option value="Script MT Bold">Script MT Bold</option>
-                                                            <option value="Stencil">Stencil</option>
-                                                            <option value="Verdana">Verdana</option>
-                                                            <option value="Lucida Console">Lucida Console</option>
-                                                        </select></div>
-                                                    </div>
-                                                    <div class="toolbar_div">
-                                                        <div class="toolbar_text"><select id="dropFontSize"
-                                                                                          title="请选择字体大小"
-                                                                                          onchange="deditorClass.SetFontSize()">
-                                                            <option value="">大小</option>
-                                                            <option value="1">一号</option>
-                                                            <option value="2">二号</option>
-                                                            <option value="3">三号</option>
-                                                            <option value="4">四号</option>
-                                                            <option value="5">五号</option>
-                                                            <option value="6">六号</option>
-                                                            <option value="7">七号</option>
-                                                        </select></div>
-                                                    </div>
-                                                    <div class="toolbar_div">
-                                                        <div class="toolbar_text"><select id="dropFontColor"
-                                                                                          title="字体颜色"
-                                                                                          onchange="deditorClass.SetFontColor()">
-                                                            <option value="">颜色</option>
-                                                            <option style="color: black; background-color: black"
-                                                                    value="Black">Black
-                                                            </option>
-                                                            <option style="color: red; background-color: red"
-                                                                    value="Red">Red
-                                                            </option>
-                                                            <option style="color: yellow; background-color: yellow"
-                                                                    value="Yellow">Yellow
-                                                            </option>
-                                                            <option style="color: pink; background-color: pink"
-                                                                    value="Pink">Pink
-                                                            </option>
-                                                            <option style="color: green; background-color: green"
-                                                                    value="Green">Green
-                                                            </option>
-                                                            <option style="color: orange; background-color: orange"
-                                                                    value="Orange">Orange
-                                                            </option>
-                                                            <option style="color: purple; background-color: purple"
-                                                                    value="Purple">Purple
-                                                            </option>
-                                                            <option style="color: blue; background-color: blue"
-                                                                    value="Blue">Blue
-                                                            </option>
-                                                            <option style="color: beige; background-color: beige"
-                                                                    value="Beige">Beige
-                                                            </option>
-                                                            <option style="color: brown; background-color: brown"
-                                                                    value="Brown">Brown
-                                                            </option>
-                                                            <option style="color: teal; background-color: teal"
-                                                                    value="Teal">Teal
-                                                            </option>
-                                                            <option style="color: navy; background-color: navy"
-                                                                    value="Navy">Navy
-                                                            </option>
-                                                            <option style="color: maroon; background-color: maroon"
-                                                                    value="Maroon">Maroon
-                                                            </option>
-                                                            <option style="color: limegreen; background-color: limegreen"
-                                                                    value="LimeGreen">LimeGreen
-                                                            </option>
-                                                        </select></div>
-                                                    </div>
-                                                </div>
-                                                <div class="contenttext">
-                                                    <iframe id="txtBody_iframe" name="txtBody_iframe" frameborder="no"
-                                                            onblur="deditorClass.IframeToContentText(&#39;txtBody&#39;)"
-                                                            onselect="pos=document.selection.createRange();"
-                                                            onclick="pos=document.selection.createRange();"
-                                                            onkeyup="pos=document.selection.createRange();"
-                                                            style="border:0px; width:718px; height:468px; left:0px; right:0px;display:block;"
-                                                            src="./admin_article_post_files/saved_resource.html"></iframe>
-                                                    <textarea id="txtBody" name="txtBody"
-                                                              onblur="deditorClass.ContentTextToIframe(&#39;txtBody&#39;)"
-                                                              style="border:0px; width:718px; height:500px; left:0px; right:0px;display:none"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="toolbar_mode" style="width:720px;">
-                                                <div id="EditorDesign_div" class="toolbar_mode_b"
-                                                     onclick="deditorClass.EditorDesign()"><img
-                                                        src="./admin_article_post_files/mode_design.gif" border="0"
-                                                        align="absmiddle"></div>
-                                                <div id="EditorPreview_div" class="toolbar_mode_a"
-                                                     onclick="deditorClass.EditorPreview(720,560)"><img
-                                                        src="./admin_article_post_files/mode_view.gif" border="0"
-                                                        align="absmiddle"></div>
-                                                <div id="EditorHtmlCode_div" class="toolbar_mode_a"
-                                                     onclick="deditorClass.EditorHtmlCode()"><img
-                                                        src="./admin_article_post_files/mode_html.gif" border="0"
-                                                        align="absmiddle"></div>
-                                                <div class="toolbar_mode_c"
-                                                     onclick="deditorClass.EditorSize(-100,&#39;txtBody&#39;,&#39;Editor_Div&#39;)">
-                                                    <img src="./admin_article_post_files/minus.gif" border="0"
-                                                         align="absmiddle" title="缩小输入框"></div>
-                                                <div class="toolbar_mode_c"
-                                                     onclick="deditorClass.EditorSize(+100,&#39;txtBody&#39;,&#39;Editor_Div&#39;)">
-                                                    <img src="./admin_article_post_files/plus.gif" border="0"
-                                                         align="absmiddle" title="增大输入框"></div>
-                                            </div>
-                                            <script type="text/javascript"
-                                                    defer="defer">deditorClass.EditorDesignMode('txtBody', 'http://www.cyqdata.com');
-                                            deditorClass.LoadContentTextGo();
-                                            deditorClass.SaveContentTextGo();</script>
+                                            <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+                                            <script type="text/javascript">
+                                            var ue = UE.getEditor('editor');
+                                            </script>
                                         </div>
-                                        <div class="form-item checkbox-list"><input id="txtIsMain" name="txtIsMain"
+                                        <div class="form-item checkbox-list"><input id="txtIsMain" name="ismain"
                                                                                     type="checkbox"
                                                                                     class="ipt-box"><label
                                                 for="txtIsMain">显示在系统首页</label>
                                             |
                                             <label for="txtSysClassID">系统分类</label>：
-                                            <select id="txtSysClassID" name="txtSysClassID">
-                                                <option value="19,10">中文技术</option>
-                                                <option value="20,10">英文技术</option>
-                                                <option value="43,20">心理学</option>
-                                                <option value="44,20">生理学</option>
-                                                <option value="45,20">保健类</option>
-                                                <option value="46,20">教育类</option>
-                                                <option value="47,20">和谐区</option>
-                                                <option value="48,20">私语区</option>
-                                                <option value="1986,10">QBlog开发</option>
-                                                <option value="3560,10">非技术</option>
+                                            <select id="txtSysClassID" name="sysclassid">
+                                                <option value="1">中文技术</option>
+                                                <option value="2">英文技术</option>
+                                                <option value="3">心理学</option>
+                                                <option value="4">生理学</option>
+                                                <option value="5">保健类</option>
+                                                <option value="6">教育类</option>
+                                                <option value="7">和谐区</option>
+                                                <option value="8">私语区</option>
+                                                <option value="9">QBlog开发</option>
+                                                <option value="10">非技术</option>
                                             </select>
                                             |
                                             <label for="txtLanguageID">语言</label>：
@@ -327,7 +134,7 @@
                                             </select>
                                             |
                                             <label for="txtCommentLevel">评论设置</label>：
-                                            <select id="txtCommentLevel" name="txtCommentLevel"
+                                            <select id="txtCommentLevel" name="commentlevel"
                                                     class="TextSelect TextSelect_Style">
                                                 <option value="0">允许所有人评论</option>
                                                 <option value="1">只允许注册用户评论</option>
@@ -342,7 +149,7 @@
                                         </div>
                                         <div class="form-item"><label for="txtAbstract"
                                                                       class="label">摘要</label><textarea id="txtAbstract"
-                                                                                                        name="txtAbstract"
+                                                                                                        name="_abstract"
                                                                                                         class="textarea-2"
                                                                                                         cols="30"
                                                                                                         rows="5"></textarea>
@@ -368,10 +175,10 @@
                         <dd><a href="http://www.cyqdata.com/songboriceboy/admin/link">友情链接</a></dd>
                     </dl>
                     <dl>
-                        <dt><a href="http://www.cyqdata.com/songboriceboy/article">我的文章</a></dt>
-                        <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/post">发表文章</a></dd>
-                        <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/all">文章列表</a></dd>
-                        <dd><a href="http://www.cyqdata.com/songboriceboy/admin/article/class">文章分类</a></dd>
+                        <dt><a href="/article_list.do">我的文章</a></dt>
+                        <dd><a href="/add_article.do">发表文章</a></dd>
+                        <dd><a href="/article_list.do">文章列表</a></dd>
+                        <dd><a href="/cate/list_user_all_history.do">文章分类</a></dd>
                     </dl>
                     <dl>
                         <dt><a href="http://www.cyqdata.com/songboriceboy/photo/">我的相册</a></dt>
